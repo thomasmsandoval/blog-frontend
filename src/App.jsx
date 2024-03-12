@@ -40,7 +40,7 @@ function App() {
       </div>
 
       <footer>
-        <p>Copyright 20XX</p>
+        <p>Copyright 2024</p>
       </footer>
     </div>
   );

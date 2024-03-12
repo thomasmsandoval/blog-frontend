@@ -22,6 +22,7 @@ function PostsNew() {
         <div>
           Image: <input type="url" />
         </div>
+        <button type="submit">Create blog</button>
       </form>
     </div>
   );

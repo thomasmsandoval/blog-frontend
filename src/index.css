@@ -5,3 +5,25 @@
 html {
   scroll-behavior: smooth;
 }
+
+header {
+  background-color: crimson;
+  padding: 1em;
+}
+
+header a {
+  color: gold;
+  margin-right: 10%;
+}
+
+header a:hover {
+  background-color: black;
+  border-radius: 10%;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+  font-family: fantasy;
+  font-size: small;
+  background-color: crimson;
+}

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export function PostsNew(props) {
   console.log("The props are", props);
   return (

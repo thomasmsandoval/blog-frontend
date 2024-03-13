@@ -12,7 +12,7 @@ export function PostsNew(props) {
           Body: <input type="text" />
         </div>
         <div>
-          Image: <input type="url" />
+          Image: <input type="text" />
         </div>
         <button type="submit">Create blog</button>
       </form>

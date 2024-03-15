@@ -1,9 +1,24 @@
 /* eslint-disable react/prop-types */
-export function PostsNew(props) {
+import axios from "axios";
+export function PostsNew() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("handleSubmit");
+    const params = new FormData(event.target);
+    axios
+      .post("http://localhost:3000/posts.json", params)
+      .then((response) => {
+        console.log(response.data);
+        event.target.reset();
+      })
+      .catch((error) => {
+        console.log(error.response.data.errors);
+      });
+  };
   return (
     <div id="posts-new">
       <h1>New post</h1>
-      <form method="POST" action="http://localhost:3000/posts.json">
+      <form onSubmit={handleSubmit}>
         <div>
           Title: <input name="title" type="text" />
         </div>

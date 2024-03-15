@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { PostsIndex } from "./PostsIndex";
 import { PostsNew } from "./PostsNew";
 import { Modal } from "./Modal";
+import { PostsShow } from "./PostsShow";
 
 export function Content() {
   const [posts, setPosts] = useState([]);
@@ -33,9 +35,7 @@ export function Content() {
       <PostsIndex posts={posts} onShowPost={handleShowPost} />
 
       <Modal show={isPostsShowVisible} onClose={handleClose}>
-        <h2>Title: {currentPost.title}</h2>
-        <p>Body: {currentPost.body}</p>
-        <p>image: {currentPost.image}</p>
+        <PostsShow post={currentPost} />
       </Modal>
     </main>
   );

@@ -1,19 +1,17 @@
 /* eslint-disable react/prop-types */
 export function PostsNew(props) {
-  console.log("The props are", props);
   return (
     <div id="posts-new">
       <h1>New post</h1>
-      <p>Blog by: {props.name}</p>
-      <form>
+      <form method="POST" action="http://localhost:3000/posts.json">
         <div>
-          Title: <input type="text" />
+          Title: <input name="title" type="text" />
         </div>
         <div>
-          Body: <input type="text" />
+          Body: <input name="body" type="text" />
         </div>
         <div>
-          Image: <input type="text" />
+          Image: <input name="image" type="text" />
         </div>
         <button type="submit">Create blog</button>
       </form>

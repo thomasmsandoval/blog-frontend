@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
-export function PostsNew() {
+export function PostsNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("handleSubmit");

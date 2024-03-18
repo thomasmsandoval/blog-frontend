@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -32,9 +33,9 @@ export function Content() {
     setCurrentPost(post);
   };
 
-  const handleUpdatePost = (id, params, successCallback) => {
+  const handleUpdatePost = (id, params) => {
     console.log("handleUpdatePost", params);
-    axios.patch(`http://localhost:3000/posts/${id}.json`, params).then((response) => {
+    axios.patch(`http://localhost:3000/posts/` + id + `.json`, params).then((response) => {
       setPosts(
         posts.map((post) => {
           if (post.id === response.data.id) {
@@ -44,7 +45,6 @@ export function Content() {
           }
         })
       );
-      successCallback();
       handleClose();
     });
   };
@@ -54,15 +54,22 @@ export function Content() {
     setIsPostsShowVisible(false);
   };
 
+  const handleDestroyPost = (id) => {
+    console.log("handleDestroyPost", id);
+    axios.delete(`http://localhost:3000/posts/${id}.json`).then((response) => {
+      setPosts(posts.filter((post) => post.id !== id));
+      handleClose();
+    });
+  };
+
   useEffect(handleIndexPosts, []);
 
   return (
     <main>
       <PostsNew onCreatePost={handleCreatePost} />
       <PostsIndex posts={posts} onShowPost={handleShowPost} />
-
       <Modal show={isPostsShowVisible} onClose={handleClose}>
-        <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} />
+        <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} onDestroyPost={handleDestroyPost} />
       </Modal>
     </main>
   );

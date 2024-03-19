@@ -66,11 +66,13 @@ export function Content() {
 
   return (
     <main>
-      <PostsNew onCreatePost={handleCreatePost} />
-      <PostsIndex posts={posts} onShowPost={handleShowPost} />
-      <Modal show={isPostsShowVisible} onClose={handleClose}>
-        <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} onDestroyPost={handleDestroyPost} />
-      </Modal>
+      <div className="container">
+        <PostsNew onCreatePost={handleCreatePost} />
+        <PostsIndex posts={posts} onShowPost={handleShowPost} />
+        <Modal show={isPostsShowVisible} onClose={handleClose}>
+          <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} onDestroyPost={handleDestroyPost} />
+        </Modal>
+      </div>
     </main>
   );
 }

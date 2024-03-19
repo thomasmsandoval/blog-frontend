@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import axios from "axios";
 export function PostsNew(props) {
@@ -20,15 +21,17 @@ export function PostsNew(props) {
       <h1>New post</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          Title: <input name="title" type="text" />
+          Title: <input className="form-control" name="title" type="text" />
         </div>
         <div>
-          Body: <input name="body" type="text" />
+          Body: <input className="form-control" name="body" type="text" />
         </div>
         <div>
-          Image: <input name="image" type="text" />
+          Image: <input className="form-control" name="image" type="text" />
         </div>
-        <button type="submit">Create blog</button>
+        <button className="btn btn-outline-danger" type="submit">
+          Create blog
+        </button>
       </form>
     </div>
   );

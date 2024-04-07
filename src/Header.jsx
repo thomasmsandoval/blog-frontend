@@ -1,6 +1,26 @@
+/* eslint-disable no-unused-vars */
+import { Modal } from "./Modal";
+import { About } from "./About";
+import { Signup } from "./Signup";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 export function Header() {
+  const [isSignupVisible, setIsSignupVisible] = useState(false);
+
+  const handleSignupShow = () => {
+    setIsSignupVisible(true);
+  };
+
+  const handleClose = () => {
+    setIsSignupVisible(false);
+  };
+
   return (
     <div>
+      <Modal show={isSignupVisible} onClose={handleClose}>
+        <Signup />
+      </Modal>
       <header>
         {/* old header */}
         {/* <a href="#">Home</a> | <a href="#posts-index">All posts</a> | <a href="#posts-new">New post</a> */}
@@ -9,7 +29,7 @@ export function Header() {
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container-fluid">
             <a className="navbar-brand" href="#">
-              Navbar
+              Troajan Blog
             </a>
             <button
               className="navbar-toggler"
@@ -25,19 +45,29 @@ export function Header() {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">
+                  <Link to="/" className="nav-link active" aria-current="page">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#posts-index">
+                  <Link className="nav-link" to="/">
                     All Posts
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#posts-new">
+                  <Link className="nav-link" to="/posts/new">
                     New Post
-                  </a>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about">
+                    About
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="signup" onClick={handleSignupShow} className="nav-link">
+                    Signup
+                  </Link>
                 </li>
               </ul>
             </div>

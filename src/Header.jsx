@@ -55,20 +55,35 @@ export function Header() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/posts/new">
-                    New Post
-                  </Link>
-                </li>
-                <li className="nav-item">
                   <Link className="nav-link" to="/about">
                     About
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="signup" onClick={handleSignupShow} className="nav-link">
-                    Signup
+                  <Link className="nav-link" to="/posts/new">
+                    New Post
                   </Link>
                 </li>
+                {localStorage.jwt === undefined ? (
+                  <>
+                    <li className="nav-item">
+                      <Link to="signup" className="nav-link">
+                        Signup
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link to="login" className="nav-link" href="#">
+                        Login
+                      </Link>
+                    </li>
+                  </>
+                ) : (
+                  <li className="nav-item">
+                    <Link to="logout" className="nav-link">
+                      Logout
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
           </div>

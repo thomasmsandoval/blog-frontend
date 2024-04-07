@@ -3,6 +3,8 @@ import { useState } from "react";
 
 export function Signup() {
   const [errors, setErrors] = useState([]);
+  const [name, setName] = useState("");
+  const [status, setStatus] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,10 +15,12 @@ export function Signup() {
       .then((response) => {
         console.log(response.data);
         event.target.reset();
+        localStorage.setItem("flashMessage", "user created");
         window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
       })
       .catch((error) => {
-        console.log(error.response.data.errors);
+        setStatus(error.response.status);
+        console.log(error.response.data.errors, error.response.status);
         setErrors(error.response.data.errors);
       });
   };
@@ -24,6 +28,7 @@ export function Signup() {
   return (
     <div id="signup">
       <h1>Signup</h1>
+      {status ? <image src={`https://http.cat/${status}`} /> : null}
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
@@ -31,8 +36,10 @@ export function Signup() {
       </ul>
       <form onSubmit={handleSubmit}>
         <div>
-          Name: <input name="name" type="text" />
+          Name:{" "}
+          <input name="name" value={name} onChange={(event) => setName(event.target.value.slice(0, 20))} type="text" />
         </div>
+        <small>{20 - name.length} characters remaining</small>
         <div>
           Email: <input name="email" type="email" />
         </div>
